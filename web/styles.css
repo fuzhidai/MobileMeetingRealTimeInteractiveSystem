@@ -1,0 +1,178 @@
+/**网页背景色*/
+body
+{
+    background-color: #EEEEEE;
+}
+/**最左上角header部分留出适当空*/
+.demo-drawer-header {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 16px;
+    height: 151px;
+}
+/**使头像圆形显示*/
+.demo-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+/**用户名旁的下拉箭头*/
+.demo-avatar-dropdown {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+}
+/**填满drawer里navigation部分至最下方*/
+.demo-navigation {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+/**左侧标签样式*/
+.demo-layout .demo-navigation .mdl-navigation__link {
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.56);
+    font-weight: 500;
+    cursor: pointer;
+}
+/**左侧标签鼠标划过时样式*/
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+    background-color: #00BCD4;
+    color: #37474F;
+    cursor: pointer;
+}
+/**左侧标签icon样式*/
+.demo-navigation .mdl-navigation__link .material-icons {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.56);
+    margin-right: 32px;
+}
+/**第一个card前顶部空一点*/
+main > .mdl-layout__tab-panel {
+    padding: 8px;
+    padding-top: 48px;
+}
+/**大屏幕时将左右空出来*/
+section.section--center {
+    max-width: 860px;
+}
+
+section.section--center .section__text:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,.13);
+}
+/**每一个listitem后划一道横线
+li:not(:last-child) {
+border-bottom: 1px solid rgba(0,0,0,.13);
+}*/
+
+/**将不同的Section隔开*/
+.mdl-layout__content section:not(:last-of-type) {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+
+/**以下为Vote界面*/
+.vote-list{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.vote-list:not(:last-child){
+    border-bottom: 1px solid rgba(0,0,0,.13);
+}
+
+.vote-list--question{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.vote-list--answer{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/**以下为扫码登录页面*/
+section.section-code-center {
+    max-width: 600px;
+}
+/**文件上传*/
+.uploaded-file--list-item{
+    padding: 5px;
+}
+
+/**大屏幕*/
+.ppt-frame{
+    width: 100%;
+    height: 100%;
+}
+/**Dialog Polyfill*/
+/**body {
+    padding-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.mdl-dialog {
+    border: none;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+    width: 280px; }
+.mdl-dialog__title {
+    padding: 24px 24px 0;
+    margin: 0;
+    font-size: 2.5rem; }
+.mdl-dialog__actions {
+    padding: 8px 8px 8px 24px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+.mdl-dialog__actions > * {
+    margin-right: 8px;
+    height: 36px; }
+.mdl-dialog__actions > *:first-child {
+    margin-right: 0; }
+.mdl-dialog__actions--full-width {
+    padding: 0 0 8px 0; }
+.mdl-dialog__actions--full-width > * {
+    height: 48px;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    padding-right: 16px;
+    margin-right: 0;
+    text-align: right; }
+.mdl-dialog__content {
+    padding: 20px 24px 24px 24px;
+    color: rgba(0,0,0, 0.54); }*/

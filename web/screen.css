@@ -1,0 +1,42 @@
+.my-header{
+    position: absolute;
+    top: 0%;
+}
+.ppt-div{
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    width: 90%;
+    height: 85%;
+}
+
+.chip{
+    position: absolute;
+    top: 25%;
+    left: 80%;
+    opacity: 0.8;
+}
+
+.sign_wall{
+    height: 150px;
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 10px;
+}
+
+.sign_wall img{
+    height: 100px;
+    width: 100px;
+}
+
+.sign_wall div{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #333333;
+}

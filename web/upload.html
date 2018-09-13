@@ -1,0 +1,145 @@
+<script>
+
+    function upload() {
+        $.ajaxFileUpload
+        (
+            {
+                url: 'upload.php', //用于文件上传的服务器端请求地址
+                secureuri: false, //是否需要安全协议，一般设置为false
+                fileElementId: ['ppt-file','file'], //文件上传域的ID
+                data: { Id: '123', name: 'lunis' }, //此参数非常严谨，写错一个引号都不行
+                dataType: 'JSON', //返回值类型 一般设置为json
+                success: function (data, status)  //服务器成功响应处理函数
+                {
+                    console.log('upload successfully!')
+                    if (typeof (data.error) != 'undefined') {
+                        if (data.error != '') {
+                            alert(data.error);
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                },
+                error: function (data, status, e)//服务器响应失败处理函数
+                {
+                    alert(e);
+                }
+            }
+        )
+        return false;
+    }
+
+
+</script>
+
+<div class="mdl-layout__tab-panel is-active">
+    <!-- 页面content开始 -->
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <form id="upload" enctype="multipart/form-data" method="post" class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">文件上传</h4>
+                <!-- 装有一个ul表单的mdl-cell -->
+                <ul class="demo-list-two mdl-list">
+                    <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-icon">subscriptions</i>
+                                      <span>幻灯片上传</span>
+                                      <span class="mdl-list__item-sub-title">
+                                          后缀名需为.ppt .pptx，且大小不超过10M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          <i id="ppt-name">当前尚未选择幻灯片</i>
+                                      </span>
+                                    </span>
+                        <span class="mdl-list__item-secondary-content">
+                                      <a class="mdl-list__item-secondary-action" href="#">
+                                         <style>#ppt-file { display: none; }</style>
+                                        <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--file">
+                                          <i class="material-icons">attach_file</i><input type="file" name="ppt-file" id="ppt-file">
+                                        </label>
+                                      </a>
+                                    </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-icon">file_upload</i>
+                                      <span>其它文件</span>
+                                      <span class="mdl-list__item-sub-title">
+                                          无需在大屏幕上展示的会务文件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i id="file-name">当前尚未选择文件</i>
+                                      </span>
+                                    </span>
+                        <span class="mdl-list__item-secondary-content">
+                                      <a class="mdl-list__item-secondary-action" href="#">
+                                         <style>#file { display: none; }</style>
+                                        <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--file">
+                                          <i class="material-icons">attach_file</i><input type="file" name="file" id="file">
+                                        </label>
+                                      </a>
+                                    </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdl-card__actions mdl-card--border" style="padding-left: 85%">
+                <button id="demo-show-toast" class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button mdl-js-ripple-effect" type="button" onclick="upload();">
+                    确认上传
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__supporting-text mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">已上传</h4>
+                <!-- 装有一个ul表单的mdl-cell -->
+                <div class="demo-list-action mdl-list">
+                    <div class="mdl-list__item uploaded-file--list-item">
+                                <span class="mdl-list__item-primary-content">
+                                  <i class="material-icons" style="padding-right: 30px">done</i>
+                                  <span>powerpoint1.pptx</span>
+                                </span>
+                        <a class="mdl-list__item-secondary-action">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                删除
+                            </button>
+                        </a>
+                    </div>
+                    <div class="mdl-list__item  uploaded-file--list-item">
+                                <span class="mdl-list__item-primary-content">
+                                  <i class="material-icons" style="padding-right: 30px">done</i>
+                                  <span>会议资料.zip</span>
+                                </span>
+                        <a class="mdl-list__item-secondary-action">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                删除
+                            </button>
+                        </a>
+                    </div>
+                    <div class="mdl-list__item  uploaded-file--list-item">
+                                <span class="mdl-list__item-primary-content">
+                                  <i class="material-icons" style="padding-right: 30px">done</i>
+                                  <span>主讲人照片.docx</span>
+                                </span>
+                        <span class="mdl-list__item-secondary-content">
+                                   <a class="mdl-list__item-secondary-action">
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                        删除
+                                    </button>
+                                </a>
+                                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 页面content结束 -->
+</div>
+
+
+
+
+
+
+
+
