@@ -1,0 +1,179 @@
+<import src="../../components/picker/picker.wxml"/>
+<template is="picker" data="{{ ...$wux.picker.default }}"/>
+<import src="../../components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<view wx:if='{{type!="collect"}}' class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view wx:if='{{type!="collect"}}' class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+<view wx:if='{{type=="set"}}'>
+
+  <view style='background: #fff;'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_prize}}'></image></view>
+      <text>发起抽奖</text>
+    </view>
+    <view class='tip_block'><text>点击奖项选择奖项（如 “特等奖” ），长按奖项删除奖项，长按奖品删除奖品</text></view>
+  </view>
+  <view class='cut'></view>
+
+  <view class='list_block' wx:for='{{lottery}}' wx:key='lottery' wx:for-index="grade_index">
+    <view class='item_block'>
+
+
+      <view id='{{grade_index}}' bindlongtap='del_grade'>
+        <view class='question_item'>
+          <image src='{{trophy}}'></image>
+          <view id='{{grade_index}}' class='question_item_text' bindtap="onTapDefault">{{item.grade}}</view>
+
+        </view>
+      </view>
+
+
+      <view class='choice_block' wx:for='{{item.awards}}' wx:key='awards' wx:for-index="award_index">
+        <view id='{{award_index}}' data-grade_id='{{grade_index}}' bindlongtap='del_award' class='del_block'>
+          <view class='standard_choice'><text>奖 品：</text></view>
+
+          <view class='check_box_block'>
+
+            <view class='choice_item'>
+              <input id='{{award_index}}' data-grade_id='{{grade_index}}'  bindinput='award_input' placeholder='输入奖品名称' placeholder-class='placeholder' focus="{{focus}}"/>
+            </view>
+            <view class="weui-cell__ft">
+
+              <view class="wux-xnumber {{ className }}">
+		          <view id='{{award_index}}' data-grade_id='{{grade_index}}' bindtap='bindtap' data-type="sub" class="wux-number-selector wux-number-selector-sub">-</view>
+	          	<input id='{{award_index}}' data-grade_id='{{grade_index}}' bindinput="num_input" value="{{item.num}}" type="number" class="wux-number-input" />
+		          <view id='{{award_index}}' data-grade_id='{{grade_index}}' bindtap="bindtap" data-type="add" class="wux-number-selector wux-number-selector-plus">+</view>
+
+	          </view>
+
+            </view>
+
+          </view>
+
+
+        </view>
+
+      </view>
+
+      <view class='choice_block' style='height:100rpx;border-bottom:30rpx solid #fff;'>
+        <view class='standard_choice'><text>. . .  ：</text></view>
+        <view id='{{grade_index}}' class='choice_item' bindtap='add_award'><text>添加新的奖品</text></view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='sign_block' bindtap='add_grade'>
+      <view class='sign_icon'><image src='{{add_question}}'></image></view>
+      <text>添加新的奖项</text>
+    </view>
+    <view class='sign_block' bindtap='preview'>
+      <view class='sign_icon'><image src='{{preview}}'></image></view>
+      <text style='border-bottom-width:0;'>抽奖信息预览</text>
+    </view>
+  </view>
+
+  <view class='cut'></view>
+    <view class='submit' bindtap='submit'>发起抽奖</view>
+  <view class='cut'></view>
+
+
+</view>
+
+<view wx:if='{{type=="preview"}}'>
+
+  <view style='background: #fff;'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_prize}}'></image></view>
+      <text>抽奖信息预览</text>
+    </view>
+  </view>
+  <view class='cut'></view>
+
+  <view class='list_block' wx:for='{{lottery}}' wx:key='lottery' wx:for-index="grade_index">
+    <view class='item_block'>
+
+
+      <view id='{{grade_index}}' bindlongtap='del_grade'>
+        <view class='question_item'>
+          <image src='{{trophy}}'></image>
+          <view id='{{grade_index}}' class='question_item_text' bindtap="onTapDefault">{{item.grade}}</view>
+
+        </view>
+      </view>
+
+
+      <view class='choice_block' wx:for='{{item.awards}}' wx:key='awards' wx:for-index="award_index">
+        <view id='{{award_index}}' data-grade_id='{{grade_index}}' bindlongtap='del_award' class='del_block'>
+          <view class='standard_choice'><text>奖 品：</text></view>
+
+          <view class='check_box_block'>
+
+            <view class='choice_item'>
+              <input id='{{award_index}}' data-grade_id='{{grade_index}}' value='{{item.award}}' disabled='true' bindinput='award_input' placeholder='输入奖品名称' placeholder-class='placeholder' focus="{{focus}}"/>
+            </view>
+
+            <view>{{item.num}} 人</view>
+
+            </view>
+
+          </view>
+
+
+        </view>
+
+      </view>
+
+    </view>
+</view>
+
+<view wx:if='{{type=="collect"}}'>
+  
+    <view wx:for='{{lottery_list}}' wx:key='{{lottery_list}}' class='list_item_container'>
+
+      <view class='list_item_block'>
+        <text class='list_item_standard'>I D</text>
+        <text class='list_item_info'>{{index+1}}</text>
+      </view>
+
+      <view class='list_item_block'>
+        <text class='list_item_standard'>会 议</text>
+        <text class='list_item_info'>{{item.theme}}</text>
+      </view>
+
+      <view class='list_item_block'>
+        <text class='list_item_standard'>时 间</text>
+        <text class='list_item_info'>{{item.time}}</text>
+      </view>
+
+      <view class='list_item_block'>
+        <text class='list_item_standard'>奖 品</text>
+        <text class='list_item_info'>{{item.grade}}：{{item.award}}</text>
+      </view>
+
+    </view>
+
+</view>
+
+<view wx:if='{{type=="set_function"}}'>
+
+  <view class='cut' style='height:50rpx;'></view>
+
+  <view wx:for='{{lottery_function}}' wx:key='{{lottery_function}}' class='choose_function_block' id='{{index}}' bindtap='choose_function'>
+
+    <text>{{item}}</text>
+    <image wx:if='{{index!=choose_function}}' src='{{choose_default}}'></image>
+    <image wx:else src='{{choose_icon}}'></image>
+
+  </view>
+
+  <view class='make_sure' bindtap='make_sure'>确 认</view>
+</view>
+
+<view wx:if='{{type=="shake"}}'>
+
+</view>

@@ -1,0 +1,236 @@
+/* pages/attend_present/attend_present.wxss */
+.content_container {
+  width: 100%;
+  height: 1108rpx;
+}
+
+.function_cut {
+  border-left: 2rpx solid #DCDCDC;
+  border-right: 2rpx solid #DCDCDC;
+}
+
+.function_bottom_cut {
+  border-bottom: 2rpx solid #DCDCDC;
+}
+
+.info_container {
+  width: 90%;
+  margin: 5% 5% 0 5%; 
+  background: #ffffff;
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 4rpx;
+  position: relative;
+}
+
+.info_container image {
+  height: 100rpx;
+  width: 100rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.theme_block {
+  width: 88%;
+  height: 60rpx;
+  color: #333333;
+  font-size: 40rpx;
+  position: relative;
+  margin-top: 20rpx;
+}
+
+.type_block {
+  width: 88%;
+  height: 70rpx;
+  color: #888888;
+  display: flex;
+  font-size: 30rpx;
+  align-items: center;
+  position: relative;
+}
+
+.place_block {
+  width: 90%;
+  height: 70rpx;
+  color: #888888;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.place_block image {
+  width: 45rpx;
+  height: 45rpx;
+  position: absolute;
+  top: 15rpx;
+  left: 0rpx;
+}
+
+.place_block text {
+  position: absolute;
+  left: 55rpx;
+  font-size: 30rpx
+}
+
+.more_block {
+  width: 90%;
+  height: 70rpx;
+  color: #0066b9;
+  font-size: 28rpx;
+  border-top: 2rpx solid #DCDCDC;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.more_block text {
+  width: 17%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.function_title {
+  width: 90%;
+  margin: 0 5% 0 5%;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42rpx;
+  color: #333333;
+}
+
+.function_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.function_block {
+  width: 220rpx;
+  height: 220rpx;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.function_block text {
+  width: 100%;
+  height: 30%;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 42rpx;
+}
+
+.function_block image {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 40rpx;
+}
+
+.barrage_container {
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+  bottom: 0rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.barrage_block {
+  width: 90%;
+  margin: 0 5% 0 5%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_block {
+  width: 86%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  border-bottom-color: #888888;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+}
+
+.input_block input {
+  width: 75%;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.input_block image {
+  width: 9%;
+  height: 50rpx;
+}
+
+.send_text {
+  width: 14%;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #0066b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  font-size: 28rpx;
+  margin-left: 5rpx;
+  color: #DCDCDC;
+} 
+
+.all_function {
+  width: 90%;
+  margin-left: 5%;
+  background: #ffffff;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-radius: 4rpx;
+}
+
+.race_item {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 100%;
+  background: #1d93ec;
+  opacity: 0.9;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.race_item text {
+  font-size: 70rpx;
+  font-weight: 350;
+  color: #fff;
+}

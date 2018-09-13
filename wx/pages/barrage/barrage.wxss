@@ -1,0 +1,155 @@
+.sign_block {
+  width: 100%;
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #333333;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  border-top: 2rpx solid #efeff4;
+}
+
+.sign_icon {
+  margin-left: 5%;
+  width: 15%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_block image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.sign_block text {
+  width: 30%;
+  height: 100rpx;
+  font-size: 32rpx;  
+  display: flex;
+  align-items: center;
+}
+
+.sign_in {
+  width: 35%;
+  margin-right: 15%;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.sign_in image {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.barrage_item {
+  width: 100%;
+  margin: 30rpx 0 30rpx;
+}
+
+.barrage_item {
+  width: 90%;
+  margin-left: 5%;
+  background: #ffffff;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all;
+}
+
+.dark_light {
+  opacity: 1;
+}
+
+.operation {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  background: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.operation text {
+  width: 150rpx;
+  height: 70rpx;
+  background: #1d93ec;
+  color: #ffffff;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6rpx;
+}
+
+.title_block {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  background: #ffffff;
+  border-top: 30rpx solid #efeff4;
+  border-bottom: 2rpx solid #efeff4;
+}
+
+.nickname {
+  height: 70rpx;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+  font-size: 38rpx;
+}
+
+.content {
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.btn_note {
+  position: fixed;
+  background: #1d93ec;
+  top: 900rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_note image {
+  height: 55rpx;
+  width: 55rpx;
+}
+
+.btn_photo {
+  position: fixed;
+  background: #1d93ec;
+  top: 1020rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_photo image {
+  height: 55rpx;
+  width: 55rpx;
+}

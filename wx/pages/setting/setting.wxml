@@ -1,0 +1,22 @@
+
+<view class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+<view>
+
+  <view class='cut'></view>
+  <view style='background:#fff;'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>会议设置</text>
+    </view>
+    <view class='sign_block' style='border-bottom-width: 0;'>
+      <text>设置为当前会议</text>
+      <view class='sign_in' bindtap='btn_barrage'>
+        <image wx:if='{{current=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{current=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,96 @@
+<import src="../../components/actionsheet/actionsheet.wxml"/>
+<import src="../../components/toast/toast.wxml"/>
+
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<template is="actionsheet" data="{{ ...$wux.actionSheet }}"/>
+
+<view wx:if='{{identity!="collect"}}' class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view wx:if='{{identity!="collect"}}' class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+<view wx:if='{{identity=="create"}}'>
+
+    <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_file}}'></image></view>
+      <text>文件管理</text>
+    </view> 
+
+    <view class='cut'></view>
+    
+      <view wx:for='{{file_list_prepare}}' wx:key='{{list}}'>
+      
+        <view id='{{index}}' style='display:flex;' hover-class='choose_block' bindtap='btn_preview' bindlongpress='showActionSheet2'>
+          <view class='type_block'><image src='{{item.type_icon}}'></image></view>
+          <view class='file_info'>
+            <view class='file_name'>{{item.name}}</view>
+            <view class='file_time'>{{item.time}}</view>
+            <view class='file_download' id='{{index}}' bindtap='btn_manage'>
+              <image wx:if='{{item.download=="true"}}' src='{{can_download}}'></image>
+              <image wx:if='{{item.download=="false"}}' src='{{cannot_download}}'></image>
+            </view>
+            <view class='file_more'><view class='dot'></view></view>
+          </view>
+        </view>
+
+      </view>
+      
+      <view class='tip'>提示：长按文件自动收藏</view>
+
+</view>
+
+<view wx:if='{{identity=="attend"}}'>
+
+    <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_file}}'></image></view>
+      <text>文件管理</text>
+    </view>
+
+    <view class='cut'></view>
+
+      <view wx:for='{{file_list_prepare}}' wx:key='{{list}}'>
+      
+        <view style='display:flex;' id='{{index}}' bindtap='btn_preview' bindlongpress='showActionSheet1'>
+          <view class='type_block'><image src='{{item.type_icon}}'></image></view>
+          <view class='file_info'>
+            <view class='file_name'>{{item.name}}</view>
+            <view class='file_time'>{{item.time}}</view>
+            <view class='file_collect'><image src='{{file_collect}}'></image></view>
+            <view class='file_more'><view class='dot'></view></view>
+          </view>
+        </view>
+
+      </view>
+
+      <view class='tip'>Tip：长按文件执行操作</view>
+</view>
+
+<view wx:if='{{identity=="collect"}}'>
+
+    <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_file}}'></image></view>
+      <text>文件管理</text>
+    </view>
+
+    <view class='cut'></view>
+
+      <view wx:for='{{file_list_prepare}}' wx:key='{{list}}'>
+      
+        <view style='display:flex;' id='{{index}}' bindtap='btn_preview' bindlongpress='showActionSheet3'>
+          <view class='type_block'><image src='{{item.type_icon}}'></image></view>
+          <view class='file_info'>
+            <view class='file_name'>{{item.name}}</view>
+            <view class='file_time'>{{item.time}}</view>
+            <view class='file_collect'><image src='{{file_collect}}'></image></view>
+            <view class='file_more'><view class='dot'></view></view>
+          </view>
+        </view>
+
+      </view>
+
+      <view class='tip'>Tip：长按文件执行操作</view>
+</view>

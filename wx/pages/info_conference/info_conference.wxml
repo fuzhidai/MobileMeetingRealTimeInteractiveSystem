@@ -1,0 +1,115 @@
+<view wx:if='{{type=="prepare" || type=="search"}}'>
+  <view class='cut'></view>
+
+  <view class='info_container'>
+    <view class='title_info_block'>
+      <view class='item_block'>
+        <view class='standard_block'><text>主 题</text></view> 
+        <view class='data_block'><text>{{info.theme}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>时 间</text></view> 
+        <view class='data_block' style='border-bottom-width:0;'><text>{{info.time}}</text></view>
+      </view>
+    </view>
+  </view>
+    
+  <view class='info_container'>
+    <view class='info_block'>
+      <view class='item_block'>
+        <view class='standard'><text>状 态</text></view>
+        <view class='item_info'>
+          <text wx:if='{{info.apply=="true" & type=="search"}}'>开启报名</text>
+          <text wx:if='{{info.apply=="close" & type=="search"}}'>未开启报名</text>
+          <text wx:if='{{info.apply=="over" & type=="search"}}'>未开启报名</text>
+          <text wx:if='{{type=="prepare"}}'>已报名</text>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>人 数</text></view>
+        <view class='item_info'>
+          <text wx:if='{{info.people_num!=""}}'>{{info.people_apply_number}} / {{info.people_container_number}}</text>
+          <text wx:if='{{info.people_num==""}}'>暂无人数限制</text>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>类 型</text></view>
+        <view class='item_info'><text>{{info.type}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>主 办 方</text></view>
+        <view class='item_info'><text>{{info.sponsor}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>地 点</text></view>
+        <view class='item_info'><text>{{info.place}}</text></view>
+      </view>
+      <view class='introduce_block'>
+        <view class='introduce_standard'><text>简 介</text></view>
+        <view class='introduce_info'><text>{{info.introduction}}</text></view>
+      </view>
+
+      <view class='collect_container'>
+        <view class='collect_block'>
+          <view class='note' wx:if='{{type=="search"}}' bindtap='btn_apply'><text>报 名</text></view>
+          <view class='note' bindtap='btn_navigator'><text>导 航</text></view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{type=="finish"}}'>
+
+  <view class='cut'></view>
+
+  <view class='info_container'>
+    <view class='title_info_block'>
+      <view class='item_block'>
+        <view class='standard_block'><text>主 题</text></view> 
+        <view class='data_block'><text>{{info.theme}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>时 间</text></view> 
+        <view class='data_block' style='border-bottom-width:0;'><text>{{info.time}}</text></view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='info_container'>
+    <view class='info_block'>
+      <view class='item_block'>
+        <view class='standard'><text>状 态</text></view>
+        <view class='item_info'><text>已结束</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>类 型</text></view>
+        <view class='item_info'><text>{{info.type}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>主办方</text></view>
+        <view class='item_info'><text>{{info.sponsor}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard'><text>地 点</text></view>
+        <view class='item_info'><text>{{info.place}}</text></view>
+      </view>
+      <view class='introduce_block'>
+        <view class='introduce_standard'><text>简 介</text></view>
+        <view class='introduce_info'><text>{{info.introduction}}</text></view>
+      </view>
+
+      <view class='collect_container'>
+        <view class='collect_block'>
+          <view class='note'><text>笔 记</text></view>
+          <view class='photo'><text>图 片</text></view>
+          <view class='prize'><text>奖 品</text></view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+</view>

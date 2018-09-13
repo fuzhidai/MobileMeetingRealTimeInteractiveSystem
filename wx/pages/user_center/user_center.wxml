@@ -1,0 +1,147 @@
+<view>
+  <view class='head_container'>
+    <view class='head_image'>
+      <image class='head_image_item' src='{{background}}' mode='aspectFill'></image>
+    </view>
+
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="userinfo-nickname"> 
+        <text>{{userInfo.nickName}}</text>
+        <image src='{{title_qr}}' bindtap='btn_myCode'></image>
+      </view>
+
+      <view class='create_conference' bindtap='btn_create'>
+        <image src='{{create}}'></image>
+        <text>快速创建新的会议</text>
+        <image src='{{enter}}'></image>
+      </view>
+
+    </view>
+
+  </view>
+
+    <view class='conference_container'>
+      <view class='conference_list'>
+
+        <view class='conference_list_item' bindtap='btn_myCode'>
+          <view class='conference_icon'>
+            <image src='{{my_qr}}'></image>
+          </view>
+
+          <view class='conference_item'>我的二维码</view>
+        </view>
+
+        <view class='conference_list_item' bindtap='btn_scanCode'>
+          <view class='conference_icon'>
+            <image src='{{scan_code}}'></image>
+          </view>
+
+          <view class='conference_item' style='border-bottom-width:0rpx;'>扫一扫</view>
+        </view>
+
+
+
+      </view>
+    </view>
+
+  <view class='list_container'>
+
+    <view class='conference_container'>
+      <view class='conference_list'>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{conference1}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_start'>即将开始的会议</view>
+        </view>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{conference2}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_recent'>我近期的会议</view>
+        </view>
+
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{conference3}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_create_list'>我创建的会议</view>
+        </view>
+
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{conference4}}'></image>
+          </view>
+
+          <view class='conference_item' style='border-bottom-width:0rpx;' bindtap='btn_attened'>我参加的会议</view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='conference_container'>
+      <view class='conference_list'>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{business_card}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_card'>名片管理</view>
+        </view>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{collection}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_collect'>我的收藏</view>
+        </view>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{prize}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_lottery' style='border-bottom-width:0rpx;'>我的奖品</view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='conference_container'>
+      <view class='conference_list'>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{contact}}'></image>
+          </view>
+
+          <view class='conference_item'>联系我们</view>
+        </view>
+
+        <view class='conference_list_item'>
+          <view class='conference_icon'>
+            <image src='{{feedback}}'></image>
+          </view>
+
+          <view class='conference_item' bindtap='btn_opinion' style='border-bottom-width:0rpx;'>建议与问题反馈</view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='quit'><text>退出登录</text></view>
+  </view>
+
+
+
+</view>

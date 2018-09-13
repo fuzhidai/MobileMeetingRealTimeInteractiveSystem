@@ -1,0 +1,142 @@
+
+<view class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+<view wx:if='{{WIFI_setting==false}}'>
+
+  <!-- 签到功能设置模块 -->
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>签到方式</text>
+    </view>
+
+    <view class='sign_block'>
+      <text>二维码签到</text>
+      <view class='sign_in' bindtap='btn_QR'>
+        <image wx:if='{{QR_sign=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{QR_sign=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <view class='sign_block' style='border-bottom-width: 0;'>
+      <text>个人信息签到</text>
+      <view class='sign_in' bindtap='btn_personage'>
+        <image wx:if='{{personage_sign=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{personage_sign=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <!-- <view class='sign_block' style='border-bottom-width: 0;'>
+      <text>WIFI签到</text>
+      <view class='sign_in' bindtap='btn_WIFI'>
+        <image wx:if='{{WIFI_sign=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{WIFI_sign=="false"}}' src='{{close}}'></image>
+      </view>
+    </view> -->
+
+  </view>
+
+  <!-- 详细信息模块 -->
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>更多设置</text>
+    </view>
+
+      <view class='sign_more_block' bindtap='sign_qr'>
+        <view class='sign_icon'><image src='{{QR_icon}}'></image></view>
+        <text>获取签到二维码</text>
+      </view>
+
+      <view class='sign_more_block' bindtap='more_personage'>
+        <view class='sign_icon'><image src='{{personage_icon}}'></image></view>
+        <text style='border-bottom-width: 0;'>个人信息签到</text>
+      </view>
+
+      <!-- <view class='sign_more_block' bindtap='more_WIFI'>
+        <view class='sign_icon'><image src='{{wifi_icon}}'></image></view>
+        <text style='border-bottom-width: 0;'>WIFI签到</text>
+      </view> -->
+
+    <!-- <view class='sign_block' bindtap='more_WIFI'><text>WIFI签到</text></view>
+    <view class='sign_block' bindtap='more_QR'><text>二维码签到</text></view>
+    <view class='sign_block'  style='border-bottom-width: 0;' bindtap='more_personage'><text>个人信息签到</text></view> -->
+  </view>
+
+  <!-- 签到墙状态 -->
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>签到墙</text>
+    </view>
+    <view class='sign_block' style='border-bottom-width: 0;'>
+      <text>签到墙状态</text>
+      <view class='sign_in' bindtap='btn_wall'>
+        <image wx:if='{{sign_wall=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{sign_wall=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- WIFI签到信息设置模块 -->
+<view wx:if='{{WIFI_setting==true}}'>
+
+  <view class='cut'></view>
+  <view style='background: #ffffff;'>
+  
+  <view class='title_block'>
+    <view class='title_icon'><image src='{{title_wifi}}'></image></view>
+    <text>WIFI 信息设置</text>
+  </view>
+  <view class='info_block'>
+    <text>WIFI名称</text>
+    <input placeholder='请输入WIFI名称' placeholder-class='placeholder' bindinput='SSID'></input>
+    <text style='margin-bottom:30rpx;'>WIFI密码</text>
+    <input  style='margin-bottom:30rpx;' placeholder='默认WIFI无密码' placeholder-class='placeholder' bindinput='WIFI_password'></input>
+  </view>
+  
+  </view>
+
+  <view style='background: #ffffff;'>
+      <view class='title_block' style='margin-top: 30rpx;'>
+        <view class='title_icon'><image src='{{title_wifi}}'></image></view>
+        <text>WIFI 严格度设置</text>
+      </view>
+    <view class='choose_block'>
+    
+         <view class='choose_block_text'><text>严格度</text></view>
+         <view class='choice_block'>
+          <view class="label-2" bindtap='btn_mild'>
+            <view class="label-2__icon">
+              <view class="label-2__icon-checked" style="opacity:{{severe ? 0: 1}}"></view>
+            </view>
+            <view class="label-2__text"><text>轻度</text></view>
+          </view>
+
+          <view class="label-2" bindtap='btn_severe'>
+            <view class="label-2__icon">
+              <view class="label-2__icon-checked" style="opacity:{{severe ? 1: 0}}"></view>
+            </view>
+            <view class="label-2__text"><text>重度</text></view>
+          </view>
+    
+    </view>
+
+  </view>
+
+  <view class='tip_block'><text>轻度：只要签到时WIFI名称一致即可完成签到（一般用于不在现场设置）</text></view>
+  <view class='tip_block'><text>重度：必须为同一WIFI（同一路由器发出信号）才可完成签到（适用于在现场设置，选择重度时路由器会自动保存为当前链接WIFI的路由器）</text></view>
+  </view>
+
+  <view class='cut'></view>
+  <view class='submit' bindtap='submit'>
+    <text>保 存</text>
+  </view>
+
+</view>

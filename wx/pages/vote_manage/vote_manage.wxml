@@ -1,0 +1,152 @@
+
+<view class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+<view wx:if='{{type=="choose"}}' style='background：#ffffff;'>
+
+  <!-- <view class='title_block' style='margin-bottom: 50rpx;'><text>投 票 功 能</text></view>
+  <view class='setting_block' bindtap='btn_set'>
+    <text>发起新的投票</text>
+    <image src='{{enter}}'></image>
+  </view>
+  <view class='setting_block' bindtap='btn_record'>
+    <text>投票问题记录</text>
+    <image src='{{enter}}'></image>
+  </view>
+  <view class='setting_block' bindtap='btn_statistics'>
+    <text>投票结果统计</text>
+    <image src='{{enter}}'></image>
+  </view> -->
+
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>投票功能</text>
+    </view>
+
+    <view class='sign_block' bindtap='btn_set'>
+      <view class='sign_icon'><image src='{{vote_icon}}'></image></view>
+      <text>发起新的投票</text>
+    </view>
+    <view class='sign_block' bindtap='btn_record'>
+      <view class='sign_icon'><image src='{{vote_record}}'></image></view>
+      <text>投票问题记录</text>
+    </view>
+    <view class='sign_block' bindtap='btn_statistics'>
+      <view class='sign_icon'><image src='{{vote_result}}'></image></view>
+      <text style='border-bottom-width:0;'>投票结果统计</text>
+    </view>
+  </view>
+
+</view>
+
+<view wx:if='{{type=="set"}}' class='set' style='background：#ffffff;'>
+  <view style='background: #fff;'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{function}}'></image></view>
+      <text>发起新的投票</text>
+    </view>
+    <view class='tip_block'><text>长按问题删除问题，长按选项删除选项（当问题仅有一个选项时，问题自动删除）</text></view>
+  </view>
+    <view class='cut'></view>
+
+  <view class='list_block' wx:for='{{vote}}' wx:key='vote' wx:for-index="question_index">
+    <view class='item_block'>
+      <view id='{{question_index}}' class='question_block' bindlongtap='del_question'>
+        <view class='question_title'><text>问 题 {{question_index+1}}</text></view>
+
+        <view class='question_item'>
+          <input id='{{question_index}}' bindinput='question_input' placeholder='请输入您的问题' placeholder-class='placeholder' focus="{{focus}}"/>
+        </view>
+      </view>
+
+      <view class='choice_block' wx:for='{{item.choices}}' wx:key='choices' wx:for-index="choice_index" id='{{choice_index}}' data-question_id='{{question_index}}' bindlongtap='del_choice'>
+        <view class='standard_choice'><text>选 项 {{choice_index+1}}：</text></view>
+      <view class='choice_item'>
+        <input id='{{choice_index}}' data-question_id='{{question_index}}'  bindinput='choice_input' placeholder='请输入问题的选项' placeholder-class='placeholder' focus="{{focus}}"/>
+      </view>
+
+      </view >
+      <view class='choice_block'>
+        <view class='standard_choice'><text>. . .  ：</text></view>
+        <view id='{{question_index}}' class='choice_item' bindtap='add_choice'><text>添加新的选项</text></view>
+      </view>
+
+
+        <view class="group">
+          <view class='standard_choice'><text>是否单选 ：</text></view>
+          <view id='{{question_index}}' class="label-2" bindtap='btn_radio'>
+            <view class="label-2__icon">
+              <view class="label-2__icon-checked" style="opacity:{{item.radio=='true' ? 1: 0}}"></view>
+            </view>
+            <view class="label-2__text"><text>是</text></view>
+          </view>
+
+          <view id='{{question_index}}' class="label-2" bindtap='btn_checkbox'>
+            <view class="label-2__icon">
+              <view class="label-2__icon-checked" style="opacity:{{item.radio=='true' ? 0: 1}}"></view>
+            </view>
+            <view class="label-2__text"><text>否</text></view>
+          </view>
+
+        </view>
+    </view>
+  </view>
+
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='sign_block' bindtap='add_question'>
+      <view class='sign_icon'><image src='{{add_question}}'></image></view>
+      <text>添加新的问题</text>
+    </view>
+    <view class='sign_block' bindtap='preview'>
+      <view class='sign_icon'><image src='{{preview}}'></image></view>
+      <text style='border-bottom-width:0;'>投票预览</text>
+    </view>
+  </view>
+
+  <view class='cut'></view>
+  <view class='submit' bindtap='submit'>发起投票</view>
+  <view class='cut'></view>
+
+</view>
+
+<view wx:if='{{type=="record_detail"}}'>
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_time}}'></image></view>
+      <text>Time: {{vote[0].time}}</text>
+    </view>
+  </view>
+  <view class='cut'></view>
+
+   <view wx:for='{{vote}}' wx:key='vote' wx:for-index="question_index" wx:for-item="question_item" class='record_block'>
+
+    <text wx:if='{{question_item.radio=="true"}}' class='record_question'>{{question_index+1}} (单选){{question_item.question}}</text>
+    <text wx:if='{{question_item.radio=="false"}}' class='record_question'>{{question_index+1}} (多选){{question_item.question}}</text>
+
+    <view wx:for='{{question_item.choices}}' wx:key='choices' wx:for-index="choice_index" class='record_choice'>
+      <text>{{choice_index+1}} . {{item}}</text>
+    </view>
+
+  </view> 
+
+
+</view>
+
+<view wx:if='{{type=="record_all"}}'>
+  <view class='title_block'>
+    <view class='title_icon'><image src='{{title_record}}'></image></view>
+    <text>已发起投票记录</text>
+  </view>
+
+  <view class='cut'></view>
+
+  <view wx:for='{{vote}}' id='{{index}}' wx:key='{{vote}}' class='vote_record_block' bindtap='btn_detail_record'>
+    <text class='vote_id'>{{index+1}}</text>
+    <text class='vote_time'>{{item[0].time}}</text>
+  </view>
+  
+</view>

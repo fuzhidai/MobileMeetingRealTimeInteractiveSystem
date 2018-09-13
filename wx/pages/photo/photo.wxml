@@ -1,0 +1,35 @@
+ <camera style='position: relative;' device-position="{{device_position}}" flash="off" binderror="error" style="width: 100%; height: 459px;">
+  <view wx:if='{{video=="open"}}' class='time'>
+    <view class='red_dot' style="opacity:{{ss % 2 ? 0: 1}}"></view>
+    {{time}}
+  </view>
+ </camera> 
+
+<view class='bottom_bar'>
+
+  <view class='choose_bar'>
+    <view wx:if='{{type=="photo"}}' class='choose_block' style='color: #DCAF00'>拍照</view>
+    <view wx:if='{{type=="video"}}' class='choose_block' bindtap='photo'>拍照</view>
+    <view wx:if='{{type=="photo"}}' class='choose_block' bindtap='video'>录像</view> 
+    <view wx:if='{{type=="video"}}' class='choose_block' style='color: #DCAF00'>录像</view> 
+  </view>
+
+  <view class='take_photo_block'>
+    <image src='{{photo_album}}' class='photo_album'></image>
+
+    <view class='btn_photo'>
+      <image wx:if='{{type=="photo"}}' src='{{photo}}' bindtap="takePhoto"></image>
+      <image wx:if='{{type=="video" && video=="open"}}' src='{{video_open}}' bindtap="takeVideo"></image>
+      <image wx:if='{{type=="video" && video=="close"}}' src='{{video_close}}' bindtap="takeVideo"></image>
+
+    </view>
+
+    <image src='{{change_photo}}' class='change_photo' bindtap='change'></image>
+  </view>
+
+</view>
+
+<!--  
+ <view>预览</view>
+<image mode="widthFix" src="{{src}}"></image>   -->
+

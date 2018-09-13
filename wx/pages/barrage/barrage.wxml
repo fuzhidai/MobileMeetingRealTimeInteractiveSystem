@@ -1,0 +1,82 @@
+
+<view class='btn_note' bindtap='btn_note'><image src='{{title_record}}'></image></view>
+<view class='btn_photo' bindtap='btn_photo'><image src='{{title_photo}}'></image></view>
+
+  <view wx:if='{{type=="choose"}}'>
+
+    <view class='sign_block' style='border-top: 30rpx solid #efeff4;' bindtap='btn_set'>
+      <view class='sign_icon'><image src='{{barrage_icon}}'></image></view>
+      <text>弹幕开关</text>
+      <view class='sign_in' bindtap='btn_barrage'>
+        <image wx:if='{{barrage=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{barrage=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <view class='sign_block'>
+      <view class='sign_icon'><image src='{{barrage_check}}'></image></view>
+      <text>弹幕人工审核</text>
+      <view class='sign_in' bindtap='btn_manualDetect'>
+        <image wx:if='{{manual_detect=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{manual_detect=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <!-- <view class='sign_block'>
+      <view class='sign_icon'><image src='{{barrage_check}}'></image></view>
+      <text>弹幕自动审核</text>
+      <view class='sign_in' bindtap='btn_autoDetect'>
+        <image wx:if='{{auto_detect=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{auto_detect=="false"}}' src='{{close}}'></image>
+      </view>
+    </view> -->
+
+    <view wx:if='{{manual_detect=="true"}}' class='sign_block' style='border-top: 30rpx solid #efeff4;' bindtap='btn_detect'>
+      <view class='sign_icon'><image src='{{barrage_check}}'></image></view>
+      <text>弹幕审核</text>
+    </view>
+
+  </view>
+
+  <view wx:if='{{type=="detect"}}'>
+
+    <view class='sign_block' style='border-top: 30rpx solid #efeff4;'>
+      <view class='sign_icon'><image src='{{barrage_check}}'></image></view>
+      <text>弹幕人工审核</text>
+      <view class='sign_in' bindtap='btn_manualDetect'>
+        <image wx:if='{{manual_detect=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{manual_detect=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <view class='sign_block'>
+      <view class='sign_icon'><image src='{{barrage_check}}'></image></view>
+      <text>弹幕自动审核</text>
+      <view class='sign_in' bindtap='btn_autoDetect'>
+        <image wx:if='{{auto_detect=="true"}}' src='{{open}}'></image>
+        <image wx:if='{{auto_detect=="false"}}' src='{{close}}'></image>
+      </view>
+    </view>
+
+    <view class='title_block'>弹 幕 审 核</view>
+
+    <scroll-view scroll-y style="height: 351px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="{{scrollTop}}">
+
+      <view wx:for='{{barrage_list}}' wx:key='barrage_list'>
+        <view id='{{index}}' bindtap='btn_choose' class='barrage_item' style='opacity:{{choose_index==index?1 : 0.3}}'>
+          <text class='nickname'>{{item.nickname}}</text>
+          <text class='content'>{{item.content}}</text>
+        </view>
+      </view>
+
+    </scroll-view>
+
+    <view class='operation'>
+    
+      <text bindtap='btn_emphasis'>高 亮</text>
+      <text bindtap='btn_ignore'>忽 略</text>
+      <text bindtap='btn_upwall'>上 墙</text>
+
+    </view>
+
+  </view>

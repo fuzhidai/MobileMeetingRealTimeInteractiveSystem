@@ -1,0 +1,18 @@
+<view wx:if='{{type=="personage"}}' class='container'>
+  <view class='qr_code'>
+    <canvas style="width: 200px; height: 200px; margin-top:86rpx;" canvas-id="personage_qrcode"></canvas>
+    <view class='info_block'>
+       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <view class="userinfo-nickname"> <text>{{userInfo.nickName}}</text></view> 
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{type=="sign_in"}}' class='container'>
+  <view class='qr_code'>
+    <canvas style="width: 200px; height: 200px; margin-top:86rpx;" canvas-id="sign_in_qrcode"></canvas>
+    <view class='info_block' style='height:90rpx;justify-content: center;'>
+      <view class="userinfo-nickname"><text>{{theme}}</text></view> 
+    </view>
+  </view>
+</view>

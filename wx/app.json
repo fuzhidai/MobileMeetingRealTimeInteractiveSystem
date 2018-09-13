@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/user_center/user_center",
+    "pages/qr_code/qr_code",
+    "pages/barrage/barrage",        
+    "pages/file/file",
+    "pages/business_card/business_card",
+    "pages/collection/collection",
+    "pages/setting/setting",
+    "pages/lottery/lottery",        
+    "pages/manage_conference_open/manage_conference_open",        
+    "pages/register_conference/register_conference",        
+    "pages/sign_in/sign_in",        
+    "pages/sign_in_manage/sign_in_manage",        
+    "pages/conference_list/conference_list",
+    "pages/home_page/home_page",
+    "pages/current_conference/current_conference",
+    "pages/info_conference/info_conference",
+    "pages/note/note",
+    "pages/photo/photo",
+    "pages/vote_attend/vote_attend",
+    "pages/vote_manage/vote_manage"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1d93ec",
+    "navigationBarTextStyle": "#ffffff",
+    "backgroundColor": "#efeff4",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#1d93ec",
+    "list": [{
+        "pagePath": "pages/home_page/home_page",
+        "text": "主 页",
+        "iconPath": "assets/images/iconfont-homepage.png",
+        "selectedIconPath": "assets/images/iconfont-homepage_choose.png"
+      },
+      {
+        "pagePath": "pages/user_center/user_center",
+        "text": "我 的",
+        "iconPath": "assets/images/iconfont-user.png",
+        "selectedIconPath": "assets/images/iconfont-user_choose.png"
+      },
+      {
+        "pagePath": "pages/current_conference/current_conference",
+        "text": "当 前",
+        "iconPath": "assets/images/iconfont-current.png",
+        "selectedIconPath": "assets/images/iconfont-current_choose.png"
+      }
+    ]},
+  "debug": true
+}

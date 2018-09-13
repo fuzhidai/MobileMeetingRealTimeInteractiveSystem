@@ -1,0 +1,71 @@
+<view wx:if='{{type=="note"}}' class='note_block'>
+
+    <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{note}}'></image></view>
+      <text>笔 记</text>
+    </view>
+
+  <view class="section">
+    <view class='function'>
+      <view class='photo' bindtap='take_photo'><text>拍 照</text></view>
+      <view class='download' bindtap='btn_collect'><text>收 藏</text></view>
+    </view>
+    <textarea bindblur="bindTextAreaBlur" maxlength='-1' style='height:600rpx;' placeholder="会 议 记 录" placeholder-class='placeholder' value='{{content}}' />
+  </view>
+
+</view>
+
+<view wx:if='{{type=="scan"}}' class='note_block'>
+
+    <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{note}}'></image></view>
+      <text>笔 记</text>
+    </view>
+
+  <view class="section">
+    <view class='function'>
+      <view class='download' style='width:200rpx;'><text>会议ID：{{id}}</text></view>
+    </view>
+    <textarea wx:if='{{operation=="preview"}}' disabled='true' focus='true' bindblur="bindTextAreaBlur" maxlength='-1' style='height:600rpx;' placeholder="会 议 记 录" placeholder-class='placeholder' value='{{content}}' />
+    <textarea wx:if='{{operation=="compile"}}' focus='true' bindblur="bindTextAreaBlur" maxlength='-1' style='height:600rpx;' placeholder="会 议 记 录" placeholder-class='placeholder' value='{{content}}' />
+  </view>
+
+  <view class='compile'><text bindtap='btn_compile'>编 辑</text></view> 
+
+</view>
+
+<view wx:if='{{type=="collect"}}'>
+
+  <view class='cut'></view>
+
+  <view wx:for='{{note_list}}' id='{{index}}' wx:key='{{note_list}}' class='note_record_block' bindtap='btn_note'>
+    <text class='note_id'>{{index+1}}</text>
+    <text class='note_time'>{{item.time}}</text>
+    <image src='{{enter}}'></image>
+  </view>
+
+</view>
+
+<view wx:if='{{type=="opinion"}}'>
+
+  <view class='cut'></view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{note}}'></image></view>
+      <text>意见反馈</text>
+    </view>
+
+  <view class="section">
+    <view class='function'>
+      <view class='photo' style='width:100%;'><text>您宝贵的意见，就是我们前进的动力</text></view>
+    </view>
+    <textarea bindblur="bindTextAreaBlur" maxlength='-1' style='height:600rpx;' placeholder="反 馈 意 见" placeholder-class='placeholder' value='{{content}}' />
+  </view>
+
+  <view class='compile'><text bindtap='btn_opinion'>提交意见</text></view> 
+
+</view>

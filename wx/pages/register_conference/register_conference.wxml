@@ -1,0 +1,423 @@
+<import src="../../components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<import src="../../components/toptips/toptips.wxml"/>
+<template is="toptips" data="{{ ...$wux.toptips }}"/>
+
+<view wx:if='{{operation=="register" || operation=="update"}}'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <!-- <view class='title_time'>
+      <view class='title_time_icon'><image src='{{title_time}}'></image></view>
+      <text>{{date}} {{time}} 创建</text>
+    </view> -->
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_personage}}'></image></view>
+      <text>负责人信息</text>
+    </view>
+
+    <view>
+      <view class='item_block'>
+        <view class='standard_block'><text>姓 名</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' name='name' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='name' value='{{info.name}}' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>电 话</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' type='number' maxlength='11' name='telephone' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' type='number' maxlength='11' name='telephone' value='{{info.telephone}}' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>微 信</text></view>
+        <view class='data_block' style='border-bottom-width:0;'>
+          <input wx:if='{{operation=="register"}}' name='wechat' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='wechat' value='{{info.wechat}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_company}}'></image></view>
+      <text>主办方信息</text>
+    </view>
+
+    <view>
+      <view class='item_block'>
+        <view class='standard_block'><text>主办方</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' name='sponsor' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='sponsor' value='{{info.sponsor}}' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>承办方</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' name='contractor' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='contractor' value='{{info.contractor}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>公众号</text></view>
+        <view class='data_block' style='border-bottom-width:0;'>
+          <input wx:if='{{operation=="register"}}' name='company_wechat' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='company_wechat' value='{{info.company_wechat}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_conference}}'></image></view>
+      <text>会议信息</text>
+    </view>
+
+    <view>
+      <view class='item_block'>
+        <view class='standard_block'><text>主题</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' name='theme' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='theme' value='{{info.theme}}' placeholder="必填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      
+      <view class='item_block'>
+        <view class='standard_block'><text>类型</text></view>
+        <view class='data_block'>
+          <picker name='type' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              {{array[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='item_block'>
+        <view class='standard_block'><text>管理密码</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' bindinput='btn_manage_password' name='manage_password' placeholder="必填(六位数字)" type='number' maxlength='6' placeholder-class="placeholder" style='justify-content: center;' focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' type='number' maxlength='6'  bindinput='btn_manage_password' style='justify-content: center;' name='manage_password' value='{{info.manage_password}}' placeholder="必填(六位数字)" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+
+      <view class='item_block'>
+        <view class='standard_block'><text>开启密码</text></view>
+            <view class="label-2" bindtap='btn_open_password'>
+              <view class="label-2__icon">
+                <view class="label-2__icon-checked" style="opacity:{{password ? 1: 0}}"></view>
+              </view>
+              <view class="label-2__text"><text>是</text></view>
+            </view>
+
+            <view class="label-2" bindtap='btn_close_password'>
+              <view class="label-2__icon">
+                <view class="label-2__icon-checked" style="opacity:{{password ? 0: 1}}"></view>
+              </view>
+              <view class="label-2__text"><text>否</text></view>
+            </view>
+      </view>
+
+      <view wx:if='{{password}}' class='item_block'>
+        <view class='standard_block'><text>密码</text></view>
+        <view class='data_block' style='border-bottom-width:0;'>
+          <input wx:if='{{operation=="register"}}' name='password' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='password' value='{{info.password}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+
+      <view class='cut'></view>
+
+      <view class='item_block'>
+        <view class='standard_block'><text>时间</text></view>
+        <view class='data_block'>
+          <view class='time_choose'>
+
+          <picker name='date' mode="date" value="{{date}}" start="2018-02-15" end="2020-09-01" bindchange="bindDateChange">
+            <view class="picker">
+              {{date}}
+            </view>
+          </picker>
+
+          <picker name='time' mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+            <view class="picker">
+              {{time}}
+            </view>
+          </picker>  
+
+
+          </view>
+        </view>
+      </view>
+
+      <view class='item_block'>
+        <view class='standard_block'><text>人 数</text></view>
+        <view class='data_block'>
+          <input wx:if='{{operation=="register"}}' type='number' name='people_num' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' type='number' name='people_num' value='{{info.people_num}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>地 点</text></view>
+        <view wx:if='{{operation=="register" && place=="点击这里选择" || place==""}}' class='data_block' bindtap='choose_place'><text>点击这里选择</text></view>
+        <view wx:if='{{operation=="register" && place!="点击这里选择"}}' class='data_block' style='color:#333333' bindtap='choose_place'><text>{{place}}</text></view>
+        <view wx:if='{{operation=="update" && info.place==""}}' class='data_block' bindtap='choose_place'><text>点击这里选择</text></view>
+        <view wx:if='{{operation=="update" && info.place!=""}}' class='data_block' style='color:#333333' bindtap='choose_place'><text>{{info.place}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>地点详情</text></view>
+        <view class='data_block' style='border-bottom-width:0;'>
+          <input wx:if='{{operation=="register"}}' name='place_info' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+          <input wx:if='{{operation=="update"}}' name='place_info' value='{{info.place_info}}' placeholder="选填" placeholder-class="placeholder" focus="{{focus}}"></input>
+        </view>
+      </view>
+
+      <view class='cut'></view>
+
+      <view class='item_block'>
+        <view class='standard_block'><text>开启报名</text></view>
+            <view class="label-2" bindtap='btn_open'>
+              <view class="label-2__icon">
+                <view class="label-2__icon-checked" style="opacity:{{open ? 1: 0}}"></view>
+              </view>
+              <view class="label-2__text"><text>是</text></view>
+            </view>
+
+            <view class="label-2" bindtap='btn_close'>
+              <view class="label-2__icon">
+                <view class="label-2__icon-checked" style="opacity:{{open ? 0: 1}}"></view>
+              </view>
+              <view class="label-2__text"><text>否</text></view>
+            </view>
+      </view>
+
+      <view wx:if='{{open}}' class='item_block'>
+        <view class='standard_block'><text>报名开始</text></view>
+        <view class='data_block'>
+          <view class='time_choose'>
+              <picker name='begin_date' mode="date" value="{{begin_date}}" start="2018-2-15" end="2020-09-01" bindchange="bindDateChange_begin">
+              <view class="picker">
+                {{begin_date}}
+              </view>
+            </picker>
+            <picker name='begin_time' mode="time" value="{{begin_time}}" start="00:00" end="23:59" bindchange="bindTimeChange_begin">
+              <view class="picker">
+                {{begin_time}}
+              </view>
+            </picker>  
+          </view>
+        </view>
+      </view>
+      <view wx:if='{{open}}' class='item_block'>
+        <view class='standard_block'><text>报名结束</text></view>
+        <view class='data_block' style='border-bottom-width:0;'>
+          <view class='time_choose'>
+              <picker name='over_date' mode="date" value="{{over_date}}" start="2018-2-15" end="2020-09-01" bindchange="bindDateChange_over">
+              <view class="picker">
+                {{over_date}}
+              </view>
+            </picker>
+            <picker name='over_time' mode="time" value="{{over_time}}" start="00:00" end="23:59" bindchange="bindTimeChange_over">
+              <view class="picker">
+                {{over_time}}
+              </view>
+            </picker>  
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_introduction}}'></image></view>
+      <text>会议简介</text>
+    </view>
+
+    <view class='introduction_block'>
+      <textarea wx:if='{{operation=="register"}}' name='introduction' placeholder="点击这里填写会议介绍（必填）" />
+      <textarea wx:if='{{operation=="update"}}' name='introduction' value='{{info.introduction}}' placeholder="点击这里填写会议介绍（必填）" />
+    </view>
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_other}}'></image></view>
+      <text>其他信息</text>
+    </view>
+
+    <view>
+      <view class='item_block'>
+        <view class='standard_block'><text>LOGO</text></view>
+        <view class='data_block' bindtap='upload_LOGO'>
+          <text wx:if="{{operation=='register' && logo=='none'}}">选择上传</text>
+          <text wx:if="{{logo!='none'}}" style='color: #333333;'>已选择文件</text>
+          <text wx:if="{{operation=='update' && old_logo=='' && logo=='none'}}">选择上传</text>
+          <text wx:if="{{operation=='update' && old_logo!=''}}" style='color: #333333;'>重新上传</text>
+        </view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>相关图片</text></view>
+        <view class='data_block'  style='border-bottom-width:0;' bindtap='upload_cover'>
+          <text wx:if="{{operation=='register' && cover=='none'}}">选择上传</text>
+          <text wx:if="{{cover!='none'}}" style='color: #333333;'>已选择文件</text>
+          <text wx:if="{{operation=='update' && old_logo=='' && cover=='none'}}">选择上传</text>
+          <text wx:if="{{operation=='update' && old_logo!=''}}" style='color: #333333;'>重新上传</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='cut'></view>
+    <button wx:if='{{operation=="register"}}' class='submit' bindtap='submit' form-type='submit'>
+      <text>创建会议</text>
+    </button>
+    <button wx:if='{{operation=="update"}}' class='submit' bindtap='submit' form-type='submit'>
+      <text>更新会议</text>
+    </button>
+    <view class='cut'></view>
+
+  </form>
+</view>
+
+
+<view wx:if='{{operation=="record"}}'>
+
+  <view class='cut'></view>
+
+  <view class='info_container'>
+    <view class='title_info_block'>
+      <view class='item_block'>
+        <view class='standard_block'><text>主 题</text></view> 
+        <view class='data_block'><text>{{info.theme}}</text></view>
+      </view>
+      <view class='item_block'>
+        <view class='standard_block'><text>时 间</text></view> 
+        <view class='data_block' style='border-bottom-width:0;'><text>{{info.time}}</text></view>
+      </view>
+    </view>
+  </view>
+
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_personage}}'></image></view>
+      <text>负责人信息</text>
+    </view>
+
+
+  <view>
+    <view class='item_block'>
+      <view class='standard_block'><text>姓 名</text></view>
+      <view class='data_block'><text>{{info.name}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>电 话</text></view>
+      <view class='data_block'><text>{{info.telephone}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>微 信</text></view>
+      <view class='data_block' style='border-bottom-width:0;'><text>{{info.wechat}}</text></view>
+    </view>
+  </view>
+
+
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_company}}'></image></view>
+      <text>主办方信息</text>
+    </view>
+
+
+  <view>
+    <view class='item_block'>
+      <view class='standard_block'><text>主办方</text></view>
+      <view class='data_block'><text>{{info.sponsor}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>承办方</text></view>
+      <view class='data_block'><text>{{info.contractor}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>公众号</text></view>
+      <view class='data_block' style='border-bottom-width:0;'><text>{{info.company_wechat}}</text></view>
+    </view>
+  </view>
+
+
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_conference}}'></image></view>
+      <text>会议信息</text>
+    </view>
+
+  <view>
+    <view class='item_block'>
+      <view class='standard_block'><text>主 题</text></view>
+      <view class='data_block'><text>{{info.theme}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>类 型</text></view>
+      <view class='data_block'><text>{{info.type}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>密 码</text></view>
+      <view class='data_block' style='border-bottom-width:0;'><text>{{info.password}}</text></view>
+    </view>
+
+    <view class='cut'></view>
+
+    <view class='item_block'>
+      <view class='standard_block'><text>时 间</text></view>
+      <view class='data_block'><text>{{info.time}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>人 数</text></view>
+      <view class='data_block'><text>{{info.people_num}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>地 点</text></view>
+      <view class='data_block'><text>{{info.place}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>地点详情</text></view>
+      <view class='data_block' style='border-bottom-width:0;'><text>{{info.place_info}}</text></view>
+    </view>
+
+    <view class='cut'></view>
+
+    <view class='item_block'>
+      <view class='standard_block'><text>报名开始</text></view>
+      <view class='data_block'><text>{{info.start_apply}}</text></view>
+    </view>
+    <view class='item_block'>
+      <view class='standard_block'><text>报名结束</text></view>
+      <view class='data_block' style='border-bottom-width:0;'><text>{{info.over_apply}}</text></view>
+    </view>
+  </view>
+
+
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_introduction}}'></image></view>
+      <text>会议简介</text>
+    </view>
+
+
+  <view class='introduction_block'>
+    <text>{{info.introduction}}</text>
+  </view>
+
+    <view class='cut'></view>
+    <view class='title_block'>
+      <view class='title_icon'><image src='{{title_other}}'></image></view>
+      <text>其他信息</text>
+    </view>
+
+  <view class='cut'></view>
+
+  
+
+</view>
+

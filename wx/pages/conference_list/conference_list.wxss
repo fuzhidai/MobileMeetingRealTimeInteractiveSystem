@@ -1,0 +1,171 @@
+/* pages/prompt/index.wxss */
+.page, 
+.page__bd, 
+.weui-tab__content {
+	height: 100%;
+	padding-bottom: 0;
+}
+
+
+
+/*搜索框*/
+.search_container {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder {
+  color: #C8C8C8;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 10rpx;
+}
+
+.search_item {
+  width: 90%;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: #DCDCDC;
+  border-style: solid;
+  border-width: 2rpx;
+  border-radius: 6rpx;
+}
+
+.picker {
+  width: 20%;
+  height: 40rpx;
+  font-size: 34rpx;
+  color: #0066b9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right-color: #DCDCDC;
+  border-right-style: solid;
+  border-right-width: 2rpx;
+}
+
+.search_item input {
+  width: 75%;
+  height: 60rpx;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.search_icon {
+  width: 15%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_icon image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+
+
+/* 会议列表 */
+.list_container {
+  width: 100%;
+  height: 350rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* 会议项目 */
+.info_container {
+  width: 90%;
+  margin: 0 5% 5% 5%; 
+  background: #ffffff;
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 4rpx;
+  position: relative;
+}
+
+.info_container image {
+  height: 100rpx;
+  width: 100rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+.theme_block {
+  width: 88%;
+  height: 60rpx;
+  color: #333333;
+  font-size: 40rpx;
+  position: relative;
+  margin-top: 20rpx;
+}
+
+.type_block {
+  width: 88%;
+  height: 70rpx;
+  color: #888888;
+  display: flex;
+  font-size: 30rpx;
+  align-items: center;
+  position: relative;
+}
+
+.place_block {
+  width: 90%;
+  height: 70rpx;
+  color: #888888;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.place_block image {
+  width: 45rpx;
+  height: 45rpx;
+  position: absolute;
+  top: 15rpx;
+  left: 0rpx;
+}
+
+.place_block text {
+  position: absolute;
+  left: 55rpx;
+  font-size: 30rpx
+}
+
+.more_block {
+  width: 90%;
+  height: 70rpx;
+  color: #0066b9;
+  font-size: 28rpx;
+  border-top: 2rpx solid #DCDCDC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more_block text {
+  width: 17%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

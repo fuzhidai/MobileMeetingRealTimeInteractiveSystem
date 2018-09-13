@@ -1,0 +1,185 @@
+<import src="../../components/backdrop/backdrop.wxml"/>
+
+<template is="backdrop" data="{{ ...$wux.backdrop }}"/>
+
+<view class="page">
+  <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="{{scrollTop}}" class='content_container'>
+
+    <view class='info_container'>
+      <image wx:if='{{current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{info.theme}}</text></view>
+                <view wx:if='{{info.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{info.place}}</text>
+                </view>
+                <view wx:if='{{!info.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{info.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{info.id}}</text>
+                  <text>Time: {{info.time}}</text>
+                </view>
+
+      <view class='more_block'>
+        <text bindtap='btn_collect'>收 藏</text>
+        <text bindtap='btn_more'>详 情</text>
+      </view>
+    </view>
+
+    <view wx:if='{{type=="create"}}' class='all_function'>
+      <view class='function_title'><text>会 议 管 理</text></view>
+
+      <view class='function_container'>
+        <view class='function_block function_bottom_cut' bindtap='sign_in'>
+          <image src='{{sign_in}}'></image>
+          <text>签 到</text>
+        </view>
+
+        <view class='function_block function_cut function_bottom_cut' bindtap='btn_barrage'>
+          <image src='{{barrage}}'></image>
+          <text>弹 幕</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_vote_manage'>
+          <image src='{{vote}}'></image>
+          <text>投 票</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_lottery'>
+          <image src='{{prize}}'></image>
+          <text>抽 奖</text>
+        </view>
+
+        <view class='function_block function_cut function_bottom_cut' bindtap='btn_setting'>
+          <image src='{{setting}}'></image>
+          <text>设 置</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_file'>
+          <image src='{{file}}'></image>
+          <text>文 件</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='take_photo'>
+          <image src='{{photo}}'></image>
+          <text>相 机</text>
+        </view>
+
+        <view class='function_block function_cut function_bottom_cut' bindtap='btn_note'>
+          <image src='{{note}}'></image>
+          <text>笔 记</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_navigator'>
+          <image src='{{navigator}}'></image>
+          <text>导 航</text>
+        </view>
+
+        <view wx:if='{{light=="open"}}' class='function_block' bindtap='btn_close'>
+          <image src='{{close_light}}'></image>
+          <text>护 眼</text>
+        </view>
+
+        <view wx:if='{{light=="close"}}' class='function_block' bindtap='btn_open'>
+          <image src='{{open_light}}'></image>
+          <text>开 眼</text>
+        </view>
+
+        <view class='function_block function_cut' bindtap='btn_over'>
+          <image src='{{over}}'></image>
+          <text>结 束</text>
+        </view>
+
+        <view class='function_block'>
+          <image src='{{}}'></image>
+          <text></text>
+        </view>
+
+      </view>
+
+    </view>
+
+    <view wx:if='{{type=="attend"}}'  class='all_function'>
+
+      <view class='function_title'><text>参 与 会 议</text></view>
+
+      <view class='function_container'>
+        <view class='function_block function_bottom_cut' bindtap='sign_in'>
+          <image src='{{sign_in}}'></image>
+          <text>签 到</text>
+        </view>
+
+        <view class='function_block function_cut function_bottom_cut' bindtap='take_photo'>
+          <image src='{{photo}}'></image>
+          <text>相 机</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_vote_attend'>
+          <image src='{{vote}}'></image>
+          <text>投 票</text>
+        </view>
+
+        <view class='function_block function_bottom_cut'>
+          <image src='{{prize}}'></image>
+          <text>奖 品</text>
+        </view>
+
+        <view class='function_block function_cut function_bottom_cut' bindtap='btn_note'>
+          <image src='{{note}}'></image>
+          <text>笔 记</text>
+        </view>
+
+        <view class='function_block function_bottom_cut' bindtap='btn_file'>
+          <image src='{{file}}'></image>
+          <text>文 件</text>
+        </view>
+
+        <view class='function_block'>
+          <image src='{{setting}}'></image>
+          <text>设 置</text>
+        </view>
+
+        <view class='function_block function_cut' bindtap='btn_navigator'>
+          <image src='{{navigator}}'></image>
+          <text>导 航</text>
+        </view>
+
+        <view wx:if='{{light=="open"}}' class='function_block' bindtap='btn_close'>
+          <image src='{{close_light}}'></image>
+          <text>护 眼</text>
+        </view>
+
+        <view wx:if='{{light=="close"}}' class='function_block' bindtap='btn_open'>
+          <image src='{{open_light}}'></image>
+          <text>开 眼</text>
+        </view>
+
+      </view>
+    </view>
+
+  <view wx:if='{{locks!=0}}' class='race_item weui-btn-area btn-group' bindtap="release" style='{{lottery_position}}'>
+    <text>抢</text>
+  </view>
+
+  </scroll-view>
+
+  <view class='barrage_container'>
+    <view class='barrage_block'>
+
+      <view class='input_container'>
+        <view class='input_block'>
+          <input bindinput='input_barrage' maxlength='42' placeholder="编 辑 弹 幕" placeholder-class='placeholder' focus="{{focus}}" value='{{barrage_content}}'></input>
+          <!-- <image src='{{picture_icon}}' bindtap='choose_picture'></image> -->
+        </view>
+        <view class='send_text' bindtap='btn_send'><text>发 送</text></view>
+      </view>
+
+    </view> 
+  </view>
+
+
+
+</view>
+ 

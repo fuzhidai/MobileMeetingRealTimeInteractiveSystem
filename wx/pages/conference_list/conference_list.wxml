@@ -1,0 +1,317 @@
+<import src="../../components/prompt/prompt.wxml" />
+<import src="../../components/picker/picker.wxml"/>
+<template is="prompt" data="{{ ...$wux.prompt.msg1 }}"/>
+<template is="picker" data="{{ ...$wux.picker.default }}"/>
+
+<view class="page" wx:if='{{list_type=="create" || list_type=="attend" || list_type=="recent" || list_type=="start"}}'>
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{ tabs}}" wx:key="{{ index }}">
+          <view id="{{ index }}" class="weui-navbar__item {{ activeIndex == index ? 'weui-bar__item_on' : '' }}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{ item }}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{ sliderLeft }}px; transform: translateX({{ sliderOffset }}px); -webkit-transform: translateX({{ sliderOffset }}px);"></view>
+      </view>
+
+      <view class="weui-tab__panel">
+
+        <!-- 当前页面为全部会议界面 -->
+        <view class="weui-tab__content" hidden="{{ activeIndex != 0 }}">
+
+            <!-- 搜索会议模块 -->
+            <view class='search_container'>
+              <view class='search_item'>
+                <view bindtap='onTapDefault' class="picker">{{ typePicker }}</view>
+                <input id='all' placeholder='输入搜索内容' placeholder-class='placeholder' bindinput='input_info' focus="{{focus}}" bindconfirm='search'></input>
+                <view class='search_icon' bindtap='search'>
+                  <image src='{{search}}'></image>
+                </view>
+              </view>
+            </view>
+
+            <!-- 会议列表信息模块 -->
+            <view wx:if='{{!ifSearch_all}}' wx:for='{{all_conference_list}}' wx:key='key'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+                  <text wx:if='{{item.attend=="false" || list_type=="create"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true" || list_type=="attend"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  
+                  <text wx:if='{{list_type!="start" && item.temp_state=="finish"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>详 情</text>
+                  <text wx:if='{{(list_type=="start" && item.attend=="true") || (list_type=="attend" && item.temp_state=="prepare")}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+
+                  <text wx:if='{{list_type=="start" && item.attend=="false"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>管 理</text>
+                  <text wx:if='{{list_type=="create" && item.temp_state=="prepare"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>更 新</text>                      
+                </view>
+              </view>
+
+            </view>
+
+            <!-- 会议列表信息模块 -->
+            <view wx:if='{{ifSearch_all}}' wx:for='{{search_all_conference_list}}' wx:key='key' class='list_container'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+                  <text wx:if='{{item.attend=="false"  || list_type=="create"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true"  || list_type=="attend"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  <text wx:if='{{list_type!="start" && item.temp_state=="finish"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>详 情</text>
+                  <text wx:if='{{(list_type=="start" && item.attend=="true") || (list_type=="attend" && item.temp_state=="prepare")}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+                  <text wx:if='{{list_type=="start" && item.attend=="false"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>管 理</text>
+                  <text wx:if='{{list_type=="create" && item.temp_state=="prepare"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>更 新</text>    
+                </view>
+              </view>
+
+            </view>
+
+        </view>
+
+
+        <!-- 当前页面为未开始会议界面 -->
+        <view class="weui-tab__content" hidden="{{ activeIndex != 1 }}">
+
+            <!-- 搜索会议模块 -->
+            <view class='search_container'>
+              <view class='search_item'>
+                <view bindtap='onTapDefault' class="picker">{{ typePicker }}</view>
+                <input  id='prepare' placeholder='输入搜索内容' placeholder-class='placeholder' bindinput='input_info' focus="{{focus}}" bindconfirm='search'></input>
+                <view class='search_icon' bindtap='search'>
+                  <image src='{{search}}'></image>
+                </view>
+              </view>
+            </view>
+
+            <!-- 会议列表信息模块 -->
+            <view wx:if='{{!ifSearch_prepare}}' wx:for='{{prepare_conference_list}}' wx:key='key' class='list_container'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+                  <text wx:if='{{item.attend=="false" || list_type=="create"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true" || list_type=="attend"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  <text wx:if='{{list_type!="start" && list_type!="create"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>详 情</text>
+                  <text wx:if='{{list_type=="start" && item.attend=="true"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+                  <text wx:if='{{list_type=="start" && item.attend=="false"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>管 理</text>
+                  <text wx:if='{{list_type=="create"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>更 新</text>
+                </view>
+              </view>
+
+            </view>
+
+            <view wx:if='{{ifSearch_prepare}}' wx:for='{{search_prepare_conference_list}}' wx:key='key' class='list_container'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+                  <text wx:if='{{item.attend=="false" || list_type=="create"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true" || list_type=="attend"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  <text wx:if='{{list_type!="start" && list_type!="create"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>详 情</text>
+                  <text wx:if='{{list_type=="start" && item.attend=="true"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+                  <text wx:if='{{list_type=="start" && item.attend=="false"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>管 理</text>
+                  <text wx:if='{{list_type=="create"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_prepare'>更 新</text>
+                </view>
+              </view>
+
+            </view>
+
+        </view>
+
+
+        <!-- 当前页面为已完成会议界面 -->
+        <view class="weui-tab__content" hidden="{{ activeIndex != 2 }}">
+
+            <!-- 搜索会议模块 -->
+            <view class='search_container'>
+              <view class='search_item'>
+                <view bindtap='onTapDefault' class="picker">{{ typePicker }}</view>
+                <input  id='finish' placeholder='输入搜索内容' placeholder-class='placeholder' bindinput='input_info' focus="{{focus}}" bindconfirm='search'></input>
+                <view class='search_icon' bindtap='search'>
+                  <image src='{{search}}'></image>
+                </view>
+              </view>
+            </view>
+
+            <!-- 会议列表信息 -->
+            <view wx:if='{{!ifSearch_finish}}' wx:for='{{finish_conference_list}}' wx:key='key' class='list_container'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+
+                  <text wx:if='{{item.attend=="false" || list_type=="create" || item.temp_state=="finish"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true" || list_type=="attend" || item.temp_state=="finish"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  <text wx:if='{{list_type!="start"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_finfish'>详 情</text>
+                  <text wx:if='{{list_type=="start"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+                </view>
+              </view>
+
+            </view>
+
+            <view wx:if='{{ifSearch_finish}}' wx:for='{{search_finish_conference_list}}' wx:key='key' class='list_container'>
+
+              <view class='info_container'>
+                <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+
+                <view class='more_block'>
+                  <text wx:if='{{item.attend=="false" || list_type=="create"}}' style='width:25%;color:#DCDCDC;'>State：创建</text>
+                  <text wx:if='{{item.attend=="true" || list_type=="attend"}}' style='width:25%;color:#DCDCDC;'>State：参加</text>
+
+                  <text wx:if='{{list_type!="start"}}' style='color:#0066b9' data-index='{{index}}' bindtap='more_info_finfish'>详 情</text>
+                  <text wx:if='{{list_type=="start"}}' style='color:#0066b9' data-index='{{index}}' bindtap='enter'>进 入</text>
+                </view>
+              </view>
+
+            </view>
+
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{list_type=="search" || list_type=="collect"}}' class='search_content_container'>
+
+
+            <!-- 搜索会议模块 -->
+          <view class='search_container'>
+            <view class='search_item'>
+              <view bindtap='onTapDefault' class="picker">{{ typePicker }}</view>
+              <input placeholder='输入搜索内容' placeholder-class='placeholder' bindinput='input_info' focus="{{focus}}" bindconfirm='search'></input>
+              <view class='search_icon' bindtap='search'>
+                <image src='{{search}}'></image>
+              </view>
+            </view>
+          </view>
+
+      <view wx:if='{{search_list!=""}}' wx:for='{{search_list}}' wx:key='key' class='list_container'>
+
+        <view class='info_container'>
+          <image wx:if='{{item.current!="" && item.current=="true"}}' src='{{now}}'></image>
+
+                <view class='theme_block'><text>{{item.theme}}</text></view>
+                <view wx:if='{{item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place}}</text>
+                </view>
+                <view wx:if='{{!item.place}}' class='place_block'>
+                  <image src='{{place_icon}}'></image>
+                  <text>{{item.place_info}}</text>
+                </view>
+                <view class='type_block'>
+                  <text style='margin-right:50rpx;'>ID: {{item.id}}</text>
+                  <text>Time: {{item.time}}</text>
+                </view>
+          
+          <view class='more_block' style='justify-content: flex-end;'>
+            <text data-index='{{index}}' style='color:#0066b9' bindtap='more_info'>详 情</text>
+          </view>
+        </view>
+
+      </view>
+
+      <view wx:if='{{search_list==""}}' >
+        <view class='hint_container'>
+          <view class='hint_images'><image src='{{hint}}'></image></view>
+          <view class='hint_text'><text>您查询的会议不存在</text></view>
+        </view>
+      </view>
+
+</view>

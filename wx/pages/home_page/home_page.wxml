@@ -1,0 +1,102 @@
+<import src="../../components/refresher/refresher.wxml"/>
+<import src="../../components/dialog/dialog.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<scroll-view scroll-y style="height: 554px;" bindscrolltolower="lower" lower-threshold='200'> 
+
+  <view class="container" style="position: absolute; width:100%; height: 100%; {{ $wux.refresher.style }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+  	<template is="refresher" data="{{ ...$wux.refresher }}"/>
+
+    <view class='page_container'>
+
+      <!-- 幻灯片模块 -->
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper_item'>
+        <block wx:for="{{imgUrls}}" wx:key="key">
+          <swiper-item>
+            <image src="{{item}}" style='width:100%;height:100%' mode="aspectFill"/>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <!-- 搜索模块 -->
+      <view class='search_container'>
+        <view class='search_block' bindtap='search'>
+          <image src='{{search}}'></image>
+          <text>搜 索</text>
+        </view>
+      </view>
+
+      <!-- 推荐会议列表模块 -->
+      <view class='list_title'>
+        <text>为你推荐的会议</text>
+      </view>
+
+      <view class='list_container'>
+        <view wx:for='{{recommend_conference}}' wx:key='key' class='list_item'>
+          <image src='{{item.cover}}'></image>
+
+          <view class='info_container'>
+            <view class='item_title'>
+              <text>{{item.theme}}</text>
+            </view>
+
+            <view class='item_place'>
+              <text wx:if='{{item.place!=""}}'>{{item.place}}</text>
+              <text wx:if='{{item.place==""}}'>{{item.place_info}}</text>
+            </view>
+            <view class='item_time'><text>{{item.time}}</text></view>
+            <view class='item_introduce'><text>{{item.introduction}}</text></view>
+
+            <view class='item_action'>
+              <view class='more' data-id='{{item.id}}' bindtap='btn_more'><text>详 情</text></view>
+              <view class='apply' data-type='recommend' data-id='{{item.id}}' data-index='{{index}}' bindtap='btn_apply'><text>报 名</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 最新会议列表模块 -->
+      <view class='list_title'>
+        <text>最新的会议</text>
+      </view>
+
+      <view class='list_container'>
+        <view wx:for='{{display_conference}}' wx:key='key' class='list_item'>
+          <image src='{{item.cover}}'></image>
+
+          <view class='info_container'>
+            <view class='item_title'>
+              <text>{{item.theme}}</text>
+            </view>
+
+            <view class='item_place'>
+              <text wx:if='{{item.place!=""}}'>{{item.place}}</text>
+              <text wx:if='{{item.place==""}}'>{{item.place_info}}</text>
+            </view>
+            <view class='item_time'><text>{{item.time}}</text></view>
+            <view class='item_introduce'><text>{{item.introduction}}</text></view>
+
+            <view class='item_action'>
+              <view class='more' data-id='{{item.id}}' bindtap='btn_more'><text>详 情</text></view>
+              <view class='apply' data-type='new' data-id='{{item.id}}' data-index='{{index}}' bindtap='btn_apply'><text>报 名</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+
+</scroll-view>
+
+<view>
+
+</view>
+
+
+
+

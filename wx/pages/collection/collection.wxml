@@ -1,0 +1,19 @@
+<view wx:if='{{type=="choose"}}' style='background：#ffffff;'>
+
+  <view class='cut'></view>
+  <view class='function_block'>
+    <view class='sign_block' bindtap='btn_note'>
+      <view class='sign_icon'><image src='{{note_icon}}'></image></view>
+      <text>收藏的笔记</text>
+    </view>
+    <view class='sign_block' bindtap='btn_file'>
+      <view class='sign_icon'><image src='{{file_icon}}'></image></view>
+      <text>收藏的文件</text>
+    </view>
+    <view class='sign_block' bindtap='btn_conference'>
+      <view class='sign_icon'><image src='{{conference_icon}}'></image></view>
+      <text style='border-bottom-width:0;'>收藏的会议</text>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,218 @@
+.head_image {
+  width: 100%;
+  height: 500rpx;
+}
+
+.head_image_item {
+  width: 100%;
+  height: 100%
+}
+
+.create_conference {
+  height: 100rpx;
+  width: 60%;
+  margin-left: 25%;
+  color: #0066b9;
+  position: absolute;
+  top: 380rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create_conference image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  margin-left: 10rpx;
+}
+
+.userinfo {
+  display: flex;
+}
+
+.userinfo-avatar {
+  border-radius: 100%;
+  width: 190rpx;
+  height: 190rpx;
+  position: absolute;
+  top: 128rpx; 
+  right: 10rpx;
+  border-width: 10rpx;
+  border-color: #ffffff;
+  border-style: solid;
+}
+
+.userinfo-nickname {
+  color: white;
+  position: absolute;
+  top: 150rpx;
+  left: 10%;
+  font-size: 55rpx;
+  display: flex;
+  align-items: center;
+}
+
+.userinfo-nickname image {
+  margin-left: 30rpx;
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.function_container {
+  width: 100%;
+  height: 90rpx;
+  position: absolute;
+  top: 385rpx; 
+  display: flex;
+  justify-content: space-between;
+}
+
+.business_card {
+  width: 50%;
+  border-right-color: white;
+  border-right-style: solid;
+  border-right-width: 1rpx;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.scan_code {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.bussiness_card_image {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  bottom: 6rpx;
+  left: 100rpx;
+}
+
+.bussiness_card_text {
+  color: white;
+  position: absolute;
+  font-size: 35rpx;
+  bottom: 27rpx;
+  left: 200rpx;
+}
+
+.sacn_code_image {
+  width: 65rpx;
+  height: 65rpx;
+  position: absolute;
+  bottom: 17rpx;
+  left: 100rpx;
+}
+
+.scan_code_text {
+  color: white;
+  position: absolute;
+  font-size: 35rpx;
+  bottom: 27rpx;
+  left: 185rpx;
+}
+
+/* 功能列表 */
+.conference_container {
+  width: 100%;
+  background: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.conference_list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.conference_list_item {
+  display: flex;
+  width: 100%;
+  height: 106rpx;
+}
+
+.conference_icon {
+  height: 106rpx;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conference_icon image{
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.conference_item {
+  height: 106rpx;
+  width: 85%;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 32rpx;
+  border-bottom-color: #E6E6E6;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+}
+
+.quit {
+  color: #333333;
+  background: #ffffff;
+  margin-bottom: 50rpx;
+  height: 106rpx;
+  width: 100%;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quit text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_note {
+  position: fixed;
+  background: #1d93ec;
+  top: 900rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_note image {
+  height: 55rpx;
+  width: 55rpx;
+}
+
+.btn_photo {
+  position: fixed;
+  background: #1d93ec;
+  top: 1020rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_photo image {
+  height: 55rpx;
+  width: 55rpx;
+}

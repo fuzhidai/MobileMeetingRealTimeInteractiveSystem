@@ -1,0 +1,82 @@
+/* pages/collection/collection.wxss */
+.sign_block {
+  width: 100%;
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+}
+
+.sign_icon {
+  width: 15%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_block image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.sign_block text {
+  width: 85%;
+  height: 100rpx;
+  font-size: 32rpx;  
+  display: flex;
+  align-items: center;
+  border-bottom-color: #DCDCDC;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+}
+
+.function_block {
+  width: 100%;
+  background: #ffffff;
+}
+
+.list_block {
+  background: #ffffff;
+}
+
+.cut {
+  width: 100%;
+  height: 40rpx;
+  background: #efeff4;
+}
+
+.title_block {
+  width: 100%;
+  border-bottom: 10rpx solid #ffffff;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+
+.title_icon {
+  margin-left: 5%;
+  height: 90rpx;
+  width: 70rpx;
+  border-radius: 0 0 8rpx 8rpx;
+  background: #1d93ec;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.title_icon image {
+  margin-bottom: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.title_block text {
+  height: 90rpx;
+  margin-left: 3%;
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+}

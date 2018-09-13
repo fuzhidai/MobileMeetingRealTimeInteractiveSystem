@@ -1,0 +1,111 @@
+/* pages/setting/setting.wxss */.cut {
+  width: 100%;
+  height: 40rpx;
+  background: #efeff4;
+}
+
+.title_block {
+  width: 100%;
+  margin-bottom: 10rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+
+.title_icon {
+  margin-left: 5%;
+  height: 90rpx;
+  width: 70rpx;
+  border-radius: 0 0 8rpx 8rpx;
+  background: #1d93ec;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.title_icon image {
+  margin-bottom: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.title_block text {
+  height: 90rpx;
+  margin-left: 3%;
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+}
+
+.sign_block {
+  width: 100%;
+  height: 100rpx;
+  font-size: 30rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  border-bottom-style: solid;
+  border-bottom-color: #DEDEDE;
+  border-bottom-width: 2rpx;
+}
+
+.sign_block text {
+  width: 30%;
+  margin-left: 15%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.sign_in {
+  width: 40%;
+  margin-left: 10%; 
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_in image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.btn_note {
+  position: fixed;
+  background: #1d93ec;
+  top: 900rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_note image {
+  height: 55rpx;
+  width: 55rpx;
+}
+
+.btn_photo {
+  position: fixed;
+  background: #1d93ec;
+  top: 1020rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_photo image {
+  height: 55rpx;
+  width: 55rpx;
+}

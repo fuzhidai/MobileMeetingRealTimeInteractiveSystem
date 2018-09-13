@@ -1,0 +1,145 @@
+<view wx:if='{{type=="choose"}}' style='background：#ffffff;'>
+
+    <view class='cut'></view>
+    <view class='function_block'>
+      <view class='sign_block' bindtap='btn_mycard'>
+        <view class='sign_icon'><image src='{{mycard}}'></image></view>
+        <text style='width:85%;color:#333;'>我的名片</text>
+      </view>
+      <view class='sign_block' bindtap='btn_card_list'>
+        <view class='sign_icon'><image src='{{title_cards}}'></image></view>
+        <text style='border-bottom-width:0;color:#333;'>收藏的名片</text>
+      </view>
+    </view>
+
+</view>
+
+<view wx:if='{{type=="set_info"}}'>
+
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class='cut'></view>
+    <view class='function_block'>
+
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_name}}'></image></view>
+        <text>姓 名</text>
+        <input name='name' value='{{info.name}}'></input>
+      </view>
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_company}}'></image></view>
+        <text>公司 / 组织</text>
+        <input name='company' value='{{info.company}}'></input>
+      </view>
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_position}}'></image></view>
+        <text style='border-bottom-width:0;'>职 位</text>
+        <input name='position'  value='{{info.position}}' style='border-bottom-width:0;'></input>
+      </view>
+      <view class='cut'></view>
+
+
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_phone}}'></image></view>
+        <text>电 话</text>
+        <input name='telephone' type='number' maxlength='11' value='{{info.telephone}}'></input>
+      </view>
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_address}}'></image></view>
+        <text style='border-bottom-width:0;'>联系地址</text>
+        <input name='address' value='{{info.address}}' style='border-bottom-width:0;'></input>
+      </view>
+      <view class='cut'></view>
+
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_wechat}}'></image></view>
+        <text>微 信</text>
+        <input name='wechat' value='{{info.wechat}}'></input>
+      </view>
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_qq}}'></image></view>
+        <text>Q Q</text>
+        <input name='qq' type='number' value='{{info.qq}}'></input>
+      </view>
+      <view class='sign_block'>
+        <view class='sign_icon'><image src='{{title_email}}'></image></view>
+        <text style='border-bottom-width:0;'>邮 箱</text>
+        <input name='email' value='{{info.email}}' style='border-bottom-width:0;'></input>
+      </view>
+
+      <view class='cut'></view>
+
+        <view class='submit'><button form-type='submit'>保存更改</button></view>
+       
+      <view class='cut'></view>
+
+    </view>
+
+  </form>
+
+</view>
+
+<view wx:if='{{type=="save_info" || type=="more_info"}}'>
+
+    <view class='cut'></view>
+    <view class='cut'></view>
+    <view class='info_card_container'>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>姓 名</text>
+        <text class='info_text'>{{info.name}}</text>
+      </view>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>公司 / 组织</text>
+        <text class='info_text'>{{info.company}}</text>
+      </view>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>职 位</text>
+        <text class='info_text'>{{info.position}}</text>
+      </view>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>电 话</text>
+        <text class='info_text'>{{info.telephone}}</text>
+      </view>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>联系地址</text>
+        <text class='info_text'>{{info.address}}</text>
+      </view>
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>微 信</text>
+        <text class='info_text'>{{info.wechat}}</text>
+      </view>  
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>Q Q</text>
+        <text class='info_text'>{{info.qq}}</text>
+      </view>   
+
+      <view class='info_card_block'>
+        <text class='info_standard_text'>邮 箱</text>
+        <text class='info_text'>{{info.email}}</text>
+      </view>                   
+
+    </view>
+
+    <view class='cut'></view>
+    <view wx:if='{{type=="save_info"}}' class='save' bindtap='save'>收藏名片</view>
+    <view class='cut'></view>
+
+</view>
+
+<view wx:if='{{type=="list"}}'>
+
+  <view class='cut'></view>
+  <view wx:for='{{card_list}}' id='{{index}}' wx:key='{{card_list}}' class='list_block' bindtap='btn_more_info'>
+    <text class='list_id'>{{index+1}}</text>
+    <text class='list_name'>{{item.name}}</text>
+    <text class='list_time'>{{item.time}}</text>
+  </view>
+
+</view>

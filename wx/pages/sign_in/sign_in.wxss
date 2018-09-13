@@ -1,0 +1,166 @@
+/* pages/sign_in_manage/sign_in_manage.wxss */
+.function_block {
+  width: 100%;
+}
+
+.cut {
+  height: 40rpx;
+  width: 100%;
+  background: #efeff4;
+}
+
+.sign_block {
+  width: 100%;
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+}
+
+.sign_icon {
+  width: 15%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_block image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.sign_block text {
+  width: 85%;
+  height: 100rpx;
+  font-size: 32rpx;  
+  display: flex;
+  align-items: center;
+  border-bottom-color: #efeff4;
+  border-bottom-style: solid;
+  border-bottom-width: 2rpx;
+}
+
+.title_block {
+  width: 100%;
+  border-bottom: 10rpx solid #ffffff;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+
+.title_icon {
+  margin-left: 5%;
+  height: 90rpx;
+  width: 70rpx;
+  border-radius: 0 0 8rpx 8rpx;
+  background: #0066b9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.title_icon image {
+  margin-bottom: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.title_block text {
+  height: 90rpx;
+  margin-left: 3%;
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+}
+
+.info_block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info_item {
+  height: 100rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #DCDCDC;
+  display: flex;
+}
+
+.info_item text {
+  height: 90rpx;
+  width: 10%;
+  margin-left: 10%;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info_item input {
+  height: 90rpx;
+  width: 70%;
+  margin-left: 10%;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+}
+
+.placeholder {
+  font-size: 32rpx;
+  color: #DCDCDC;
+}
+
+.submit {
+  width: 100%;
+  height: 100rpx;
+  color: #333333;
+  font-size: 36rpx;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_note {
+  position: fixed;
+  background: #1d93ec;
+  top: 900rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_note image {
+  height: 55rpx;
+  width: 55rpx;
+}
+
+.btn_photo {
+  position: fixed;
+  background: #1d93ec;
+  top: 1020rpx;
+  right: 30rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 100%;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_photo image {
+  height: 55rpx;
+  width: 55rpx;
+}
