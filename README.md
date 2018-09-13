@@ -24,10 +24,7 @@ WEB端：HTML + CSS + material-design-lite + JQuery</br>
 ## 项目目录结构
 
 ### （一）小程序端目录结构 
-├─assets //相关静态资源存放</br>
-│  ├─images //图像存放</br>
-│  ├─plugins //加载组件</br>
-│  └─styles</br>
+#### wx + components(非自写组件)
 ├─components //相关组件样式文件</br>
 │  ├─actionsheet</br>
 │  ├─backdrop</br>
@@ -49,10 +46,6 @@ WEB端：HTML + CSS + material-design-lite + JQuery</br>
 │  ├─toast</br>
 │  ├─toptips</br>
 │  └─xnumber</br>
-├─pafes</br>
-│  └─text</br>
-├─page</br>
-│  └─qr_code</br>
 ├─pages //小程序主要页面存放</br>
 │  ├─barrage </br>弹幕管理页面</br>
 │  ├─business_card //名片页面</br>
@@ -74,9 +67,9 @@ WEB端：HTML + CSS + material-design-lite + JQuery</br>
 │  ├─user_center //用户中心</br>
 │  ├─vote_attend //参与投票页面</br>
 │  └─vote_manage //投票管理页面</br>
-└─utils
 
 ### （二）WEB端目录结构
+#### web
 │  ajaxfileupload.js //文件上传服务器</br>
 │  background2.jpg //背景图片</br>
 │  barrage.html //弹幕控制页面</br>
@@ -115,6 +108,7 @@ WEB端：HTML + CSS + material-design-lite + JQuery</br>
 │  welcome_js.js </br>
 
 ### （三）后端目录结构
+#### sever
 │  apply.php //报名接口</br>
 │  barrage.php //弹幕接口</br>
 │  collect.php //收藏接口</br>
