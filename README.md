@@ -150,93 +150,14 @@ WEB端：HTML + CSS + material-design-lite + JQuery</br>
 │  │      file.class.php</br>
 │  │</br>
 │  ├─GatewayWorker //socket异步框架</br>
-│  │  │  composer.json</br>
-│  │  │  MIT-LICENSE.txt</br>
-│  │  │  README.md</br>
-│  │  │  start_for_win.bat</br>
 │  │  │</br>
 │  │  ├─Applications</br>
-│  │  │  └─YourApp</br>
-│  │  │          Events.php</br>
-│  │  │          start_businessworker.php</br>
-│  │  │          start_gateway.php</br>
-│  │  │          start_register.php</br>
 │  │  │</br>
 │  │  └─vendor</br>
 │  │      │  autoload.php</br>
 │  │      │</br>
 │  │      ├─composer</br>
-│  │      │      autoload_classmap.php</br>
-│  │      │      autoload_namespaces.php</br>
-│  │      │      autoload_psr4.php</br>
-│  │      │      autoload_real.php</br>
-│  │      │      autoload_static.php</br>
-│  │      │      ClassLoader.php</br>
-│  │      │      installed.json</br>
-│  │      │      LICENSE</br>
-│  │      │</br>
 │  │      └─workerman //workerman框架</br>
-│  │          ├─gateway-worker-for-win</br>
-│  │          │  │  composer.json</br>
-│  │          │  │  MIT-LICENSE.txt</br>
-│  │          │  │  README.md</br>
-│  │          │  │</br>
-│  │          │  └─src</br>
-│  │          │      │  BusinessWorker.php</br>
-│  │          │      │  Gateway.php</br>
-│  │          │      │  Register.php</br>
-│  │          │      │</br>
-│  │          │      ├─Lib</br>
-│  │          │      │      Context.php</br>
-│  │          │      │      Db.php</br>
-│  │          │      │      DbConnection.php</br>
-│  │          │      │      Gateway.php</br>
-│  │          │      │</br>
-│  │          │      └─Protocols</br>
-│  │          │              GatewayProtocol.php</br>
-│  │          │</br>
-│  │          └─workerman-for-win</br>
-│  │              │  .gitignore</br>
-│  │              │  Autoloader.php</br>
-│  │              │  composer.json</br>
-│  │              │  MIT-LICENSE.txt</br>
-│  │              │  README.md</br>
-│  │              │  WebServer.php</br>
-│  │              │  Worker.php</br>
-│  │              │</br>
-│  │              ├─Connection</br>
-│  │              │      AsyncTcpConnection.php</br>
-│  │              │      AsyncUdpConnection.php</br>
-│  │              │      ConnectionInterface.php</br>
-│  │              │      TcpConnection.php</br>
-│  │              │      UdpConnection.php</br>
-│  │              │</br>
-│  │              ├─Events</br>
-│  │              │  │  Ev.php</br>
-│  │              │  │  Event.php</br>
-│  │              │  │  EventInterface.php</br>
-│  │              │  │  Libevent.php</br>
-│  │              │  │  Select.php</br>
-│  │              │  │</br>
-│  │              │  └─React</br>
-│  │              │          ExtEventLoop.php</br>
-│  │              │          LibEventLoop.php</br>
-│  │              │          StreamSelectLoop.php</br>
-│  │              │</br>
-│  │              ├─Lib</br>
-│  │              │      Constants.php</br>
-│  │              │      Timer.php</br>
-│  │              │</br>
-│  │              └─Protocols</br>
-│  │                  │  Frame.php</br>
-│  │                  │  Http.php</br>
-│  │                  │  ProtocolInterface.php</br>
-│  │                  │  Text.php</br>
-│  │                  │  Websocket.php</br>
-│  │                  │  Ws.php</br>
-│  │                  │</br>
-│  │                  └─Http</br>
-│  │                          mime.types</br>
 │  │</br>
 │  ├─PublicModel</br>
 │  │      openid.class.php</br>
