@@ -1,12 +1,12 @@
 ## 概述
 基于小程序和WEB的移动会议实时互动系统，最初用于参加比赛，也是自己的第一份系统代码，最后更新日期为2018/4/17，其中有一些API已经被更新，可能无法继续使用，如果要启用此项目需要重新按照官网重写部分API接口，比如登陆时自动获取用户信息的接口等。且后端仅使用PHP socket workerman框架，以及部分组件样式为借鉴网上的相关代码，代码总体理解难度较低，且基本所有代码都已添加注释，适合于初学者学习使用。但因为项目已经完成很久，很多多余文件未来得及进行清理，需进行相关清理。</br>
 注：此项目仅用于初学者学习使用，不得用于商业目的。
-
+</br>
 ## 项目界面展示和功能展示请移步
-https://blog.csdn.net/qq_40697071/article/details/82704432
-https://blog.csdn.net/qq_40697071/article/details/82714426
-https://blog.csdn.net/qq_40697071/article/details/82723878
-
+https://blog.csdn.net/qq_40697071/article/details/82704432</br>
+https://blog.csdn.net/qq_40697071/article/details/82714426</br>
+https://blog.csdn.net/qq_40697071/article/details/82723878</br>
+</br>
 ## 功能描述
 ### 小程序端：
 用户：</br>
